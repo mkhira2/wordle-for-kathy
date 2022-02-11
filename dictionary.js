@@ -1,4 +1,11 @@
 const dictionary = [
+  // my words
+  "kathy",
+  "kenji",
+  "marfa",
+  "sushi",
+  "ralph",
+  // end my word
   "aahed",
   "aalii",
   "aargh",

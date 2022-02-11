@@ -4,10 +4,7 @@ const DANCE_ANIMATION_DURATION = 500
 const keyboard = document.querySelector("[data-keyboard]")
 const alertContainer = document.querySelector("[data-alert-container]")
 const guessGrid = document.querySelector("[data-guess-grid]")
-const offsetFromDate = new Date(2022, 0, 1)
-const msOffset = Date.now() - offsetFromDate
-const dayOffset = msOffset / 1000 / 60 / 60 / 24
-const targetWord = targetWords[Math.floor(dayOffset)]
+const targetWord = targetWords[Math.floor(Math.random() * targetWords.length)]
 
 startInteraction()
 
@@ -101,7 +98,6 @@ function flipTile(tile, index, array, guess) {
   setTimeout(() => {
     tile.classList.add("flip")
   }, (index * FLIP_ANIMATION_DURATION) / 2)
-
   tile.addEventListener(
     "transitionend",
     () => {
@@ -166,7 +162,7 @@ function shakeTiles(tiles) {
 
 function checkWinLose(guess, tiles) {
   if (guess === targetWord) {
-    showAlert("I jester door you!", 50000)
+    showAlert("You Win", 5000)
     danceTiles(tiles)
     stopInteraction()
     return
@@ -174,7 +170,7 @@ function checkWinLose(guess, tiles) {
 
   const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")
   if (remainingTiles.length === 0) {
-    showAlert('TRY AGAIN', null)
+    showAlert(targetWord.toUpperCase(), null)
     stopInteraction()
   }
 }
